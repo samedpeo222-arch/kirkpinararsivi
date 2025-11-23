@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarihi Kırkpınar Arşivi | Genişletilmiş Ansiklopedi (TÜBİTAK Projesi)</title>
+    <title>Tarihi Kırkpınar Arşivi | Genişletilmiş Ansiklopedi (AI Kaldırıldı)</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -42,7 +42,6 @@
         /* Hero (Giriş) */
         .hero {
             height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
-            /* Lütfen 'img/er_meydani.jpg' dosyasının yüklendiğinden emin olun */
             background: linear-gradient(rgba(0,0,0,0.7), var(--black)), url('img/er_meydani.jpg');
             background-size: cover; background-position: center;
             background-attachment: fixed;
@@ -80,17 +79,6 @@
         .modal-text { flex: 1; min-width: 300px; }
         .close-btn { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #fff; cursor: pointer; transition: 0.3s; z-index: 2001; }
         .close-btn:hover { color: var(--gold); }
-
-        /* Modal İçindeki Analiz Sonucu */
-        #aiAnalysisResult {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(212, 175, 55, 0.15);
-            border-left: 4px solid var(--gold);
-            border-radius: 5px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
 
         /* Kıyaslama Seçim Alanı */
         .compare-area { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
@@ -217,13 +205,10 @@
         }
         
         /* ANALİZ BÖLÜMÜNÜN YENİ LAYOUT'U */
-        /* Kıyaslama ve grafiklerin alt alta gelmesini sağlayan yapı */
         #analiz > div {
             flex-direction: column; 
             gap: 60px; 
         }
-        
-        /* KIYASLAMA VE GRAFİK BÖLÜMLERİ ARTIK TAM GENİŞLİKTE OLACAK */
         #analiz .kıyaslama-wrapper {
             flex: none; 
             width: 100%; 
@@ -251,7 +236,6 @@
             padding: 20px;
             border-radius: 10px;
             border: 1px solid #333;
-            /* Yüksekliği artırdıkça yatay eksen daha rahatlar */
             height: 600px; 
         }
         
@@ -261,42 +245,12 @@
             height: 100% !important;
         }
 
-
-        /* --- YENİ: CHATBOT STİLLERİ --- */
-        .chat-btn { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; cursor: pointer; box-shadow: 0 5px 15px rgba(212,175,55,0.4); z-index: 1000; transition: transform 0.3s; }
-        .chat-btn:hover { transform: scale(1.1); }
-        .chat-box { 
-            display: none; 
-            flex-direction: column; 
-            position: fixed; 
-            bottom: 100px; 
-            right: 30px; 
-            width: 350px; 
-            height: 450px; 
-            background: #1a1a1a; 
-            border: 2px solid var(--gold); 
-            border-radius: 10px; 
-            z-index: 1001; 
-            overflow: hidden; 
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-        .chat-header { background: var(--gold); color: #000; padding: 12px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .chat-close { cursor: pointer; font-size: 1.5rem; }
-        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-        .message { max-width: 85%; padding: 10px; border-radius: 10px; font-size: 0.9rem; line-height: 1.4; }
-        .bot-msg { background: #333; color: #ddd; align-self: flex-start; border-bottom-left-radius: 0; }
-        .user-msg { background: var(--dark-gold); color: #111; align-self: flex-end; border-bottom-right-radius: 0; font-weight: 500; }
-        .chat-input-area { padding: 10px; background: #111; display: flex; border-top: 1px solid #333; }
-        .chat-input { flex: 1; padding: 10px; background: #222; border: none; color: #fff; border-radius: 5px; outline: none; }
-        .chat-send { background: transparent; border: none; color: var(--gold); margin-left: 10px; cursor: pointer; font-weight: bold; font-size: 1.2rem; }
-
-
         /* Footer */
         footer { text-align: center; padding: 30px; background: #000; border-top: 1px solid #222; color: #777; margin-top: 50px; }
 
         @media (max-width: 1024px) {
             .chart-container-half {
-                min-width: 100%; /* Tablette tam genişlik */
+                min-width: 100%; 
                 height: 350px;
             }
             .kıyaslama-wrapper {
@@ -317,8 +271,6 @@
             .compare-area { flex-direction: column; align-items: center; }
             .result-box { flex-direction: column; gap: 20px; }
             .vs-badge-large { margin: 10px 0; }
-            
-            /* Mobil için kiyaslama ve grafiği alt alta al */
             #analiz > div {
                 flex-direction: column;
             }
@@ -440,14 +392,7 @@
                     </div>
                 </div>
                 
-                <div id="aiSimulationArea" style="display:none; text-align:center; margin-top:40px;">
-                        <button class="btn" onclick="simulateMatch()" style="background:var(--gold); color:#000;">
-                         <i class="fas fa-microchip"></i> ✨ AI Maç Senaryosu Oluştur
-                        </button>
-                        <div id="aiSimulationResult" style="margin-top:20px; padding:20px; background:rgba(212, 175, 55, 0.1); border-left: 3px solid var(--gold); border-radius: 5px; text-align: left; line-height: 1.6; font-style: italic;">
-                            </div>
                 </div>
-            </div>
 
             <div class="grafik-wrapper chart-and-list-area" style="width: 100%;">
                 <h3 style="color:var(--gold); margin-bottom: 20px; text-align:center; border-bottom: 1px solid #333; padding-bottom: 10px;">Fiziksel Analiz (Tüm Pehlivanlar)</h3>
@@ -487,53 +432,18 @@
                     <span id="mUzmanlik"></span> 
                 </div>
 
-                <button class="btn" onclick="analyzeForm(currentPehlivanId)" style="padding: 8px 15px; margin-top: 20px; background: #555; border-color: #555;">
-                   <i class="fas fa-brain"></i> ✨ AI Form Analizi Başlat
-                </button>
-                <div id="aiFormAnalysisResult" style="margin-top:15px; padding:10px; background:rgba(255, 255, 255, 0.05); border-left: 3px solid #777; border-radius: 5px; font-size: 0.85rem; line-height: 1.4;">
                 </div>
-
-            </div>
         </div>
     </div>
     
-    <div class="chat-btn" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
-    <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            <span><i class="fas fa-robot"></i> Kırkpınar Asistanı (AI)</span>
-            <span class="chat-close" onclick="toggleChat()">&times;</span>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot-msg">Merhaba! Ben Kırkpınar Asistanıyım. Pehlivanlar, kurallar veya tarihi oyunlar hakkında dilediğinizi sorabilirsiniz.</div>
-        </div>
-        
-        <div style="padding: 10px 15px; background: #222; border-top: 1px solid #333; font-size: 0.9rem;">
-            <label for="personaSelect" style="color:var(--gold); margin-right: 10px;"><i class="fas fa-mask"></i> Persona:</label>
-            <select id="personaSelect" style="background: #444; color: #fff; border: none; padding: 5px; border-radius: 4px;">
-                <option value="assistant">Asistan (Bilge)</option>
-                <option value="kocayusuf">Koca Yusuf (Efsane)</option>
-            </select>
-        </div>
-
-        <div class="chat-input-area">
-            <input type="text" id="chatInput" class="chat-input" placeholder="Bir soru yazın..." onkeypress="handleEnter(event)">
-            <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-
     <footer>
-        <p>2025 TÜBİTAK Ortaöğretim Araştırma Projeleri Yarışması</p>
+        <p>TÜBİTAK Ortaöğretim Araştırma Projeleri Yarışması Arşivi</p>
         <p style="font-size:0.8rem; margin-top:5px;">Veriler Tarihi Kırkpınar arşivlerinden derlenmiştir.</p>
     </footer>
 
     <script>
-        // --- GEMINI API KEY BURAYA GELMELİ ---
-        // BAĞLANTI HATASI ÇÖZÜMÜ İÇİN GÜNCELLENMİŞ ANAHTARINIZ:
-        const apiKey = "AIzaSyD0KEm2psAlNcohg5VWYOdxcffVLc3-mEI"; 
-        let currentPehlivanId = null;
-        let combinedChart; // Grafik referansını globalde tutmak için
-
+        // Yapay Zeka (AI) API ile ilgili tüm kodlar kaldırıldı.
+        
         // Yeni Alan: memleket (Harita için eklendi)
         const PEHLIVANLAR = [
             // --- AKTİF BAŞPEHLİVANLAR ---
@@ -548,7 +458,7 @@
                 kariyer: "2023, 2024 Başpehlivan",
                 dogumYili: 1993, 
                 uzmanlik: "Çeviklik, Sürpriz Oyunlar, Tırpan ve Sırta Alma", 
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "Antalya Kaş doğumlu Yusuf Can Zeybek, güreş dünyasına çok hızlı bir giriş yapmıştır. 2021 yılında başaltı boyunda şampiyon olarak başpehlivanlığa yükselmiştir. Kısa boyuna rağmen inanılmaz çevikliği ve sürpriz oyunlarıyla rakiplerini şaşırtır. Özellikle 2023 yılında favori gösterilmemesine rağmen İsmail Balaban'ı finalde yenerek ilk altın kemerini takmış, bu başarısını tesadüf olmadığını kanıtlarcasına 2024 yılında da kemeri alarak üst üste iki kez şampiyon olmuştur. Antalya Büyükşehir Belediyesi ASAT Spor Kulübü adına güreşmektedir." 
             },
             { 
@@ -562,7 +472,7 @@
                 kariyer: "4 Kez Başpehlivan (2011, 12, 19, 21)",
                 dogumYili: 1988, 
                 uzmanlik: "Uzun Boy Avantajı, Künde ve Tırpan",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "Kırkpınar'ın eski başpehlivanlarından merhum Recep Gürbüz'ün oğludur. Babasının 1988'de kazandığı ama ömrü yetmediği için doyamadığı kemerin peşinden giderek güreşe başlamıştır. 1.97 metrelik boyu ve muazzam fiziğiyle 'Megastar' lakabını almıştır. En büyük özelliği, uzun boyunu avantaja çevirerek yaptığı 'künde' ve 'tırpan' oyunlarıdır. Ebedi kemer yolunda talihsizlikler yaşasa da modern dönemin en dominant güreşçisidir." 
             },
             { 
@@ -576,7 +486,7 @@
                 kariyer: "2 Kez Başpehlivan (2013, 2017)",
                 dogumYili: 1987, 
                 uzmanlik: "Yüksek Kondisyon, Paça Kazık ve İç Kazık",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "Antalya Elmalı'nın Akçay köyünde, ikizi Turan Balaban ile birlikte güreşe başlamıştır. Yağlı güreş standartlarına göre kısa boylu ve hafif olmasına rağmen, inanılmaz kondisyonu ve hızı sayesinde 'Sarı Fırtına' lakabını almıştır. En meşhur oyunu 'paça kazık'tır; rakiplerinin altına girerek onları dengesiz yakalar. 2013 ve 2017 yıllarında Kırkpınar Başpehlivanı olmuştur. Güreşirken asla yorulmamasıyla bilinir." 
             },
             { 
@@ -590,7 +500,7 @@
                 kariyer: "2 Kez Başpehlivan (2015, 2018)",
                 dogumYili: 1989, 
                 uzmanlik: "Agresif Stil, Sürekli Baskı ve Sürat",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "Antalya Kumluca doğumludur. Güreş stili tamamen agresiflik ve baskı üzerine kuruludur. Maç başladığı andan itibaren rakibine nefes aldırmadan saldırdığı için kendisine 'Geri Vitesi Olmayan Pehlivan' denilmiştir. 2015 ve 2018 yıllarında Kırkpınar Başpehlivanı olmuştur. Özellikle sıcak havalarda rakipleri yorulurken onun temposunu artırması en belirgin özelliğidir." 
             },
             { 
@@ -604,7 +514,7 @@
                 kariyer: "4 Kez Başpehlivan (2004, 07, 08, 16)",
                 dogumYili: 1982, 
                 uzmanlik: "Çangal, İç Kazık ve Teknik Hakimiyet",
-                memleket: "Ordu", // YENİ ALAN
+                memleket: "Ordu", 
                 bio: "Ordulu olan Recep Kara, 2000'li yılların en teknik ve en istikrarlı güreşçilerinden biridir. 4 kez başpehlivan olarak altın kemeri kazanmıştır. Çangal ve iç kazık oyunlarını çok iyi uygular. Ahmet Taşçı döneminden sonra gelen kuşağın en önemli temsilcisidir." 
             },
             { 
@@ -618,7 +528,7 @@
                 kariyer: "2 Kez Başpehlivan (2009, 2010)",
                 dogumYili: 1987, 
                 uzmanlik: "Minder Güreşi Kökeni, Centilmenlik, Yüksek Ayak Oyunları",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "Antalya Aksu doğumludur. Aslen minder güreşi kökenli olup Avrupa şampiyonlukları bulunmaktadır. 2009 ve 2010 yıllarında üst üste şampiyon olarak büyük bir sükse yapmıştır. Güreş camiasında beyefendiliği, sakinliği ve rakiplerine olan saygısıyla 'Örnek Sporcu' olarak gösterilir." 
             },
             { 
@@ -632,7 +542,7 @@
                 kariyer: "1 Kez Başpehlivan (2014)",
                 dogumYili: 1982, 
                 uzmanlik: "Sürat, Patlayıcı Güç ve Karadeniz Ekolü",
-                memleket: "Samsun", // YENİ ALAN
+                memleket: "Samsun", 
                 bio: "Samsun'un Ladik ilçesindendir. Karadeniz güreş ekolünün en önemli temsilcilerinden biridir. Çok süratli ve patlayıcı gücü yüksek bir güreşçidir. 2014 yılında, o dönemin favorisi İsmail Balaban'ı finalde yenerek başpehlivan olmuştur. Rakiplerinin bir anlık dalgınlığını affetmez." 
             },
             { 
@@ -646,7 +556,7 @@
                 kariyer: "1 Kez Başpehlivan (2022)",
                 dogumYili: 1990, 
                 uzmanlik: "Güçlü Fizik, Sert Hamleler ve Geriye Pasif Oynama",
-                memleket: "Sinop", // YENİ ALAN
+                memleket: "Sinop", 
                 bio: "Sinop Boyabatlıdır. Çok güçlü bir fiziğe ve kollara sahiptir. 2022 Kırkpınar güreşlerinde kemeri alarak tarihe geçmiştir. Henüz genç yaşına rağmen baş boyunda istikrarlı bir grafik çizmektedir." 
             },
             { 
@@ -660,7 +570,7 @@
                 kariyer: "1 Kez Başpehlivan (2006)",
                 dogumYili: 1980, 
                 uzmanlik: "Sert ve Mücadeleci Güreş, Bel Kündesi",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "2006 yılı Kırkpınar Başpehlivanıdır. Recep Kara'yı finalde yenerek altın kemere uzanmıştır. Antalya'nın yağlı güreşteki yükseliş döneminin (2000 sonrası) ilk büyük şampiyonlarından biridir. Sert ve mücadeleci güreşiyle tanınır." 
             },
             { 
@@ -674,7 +584,7 @@
                 kariyer: "1 Kez Başpehlivan (2005)",
                 dogumYili: 1981, 
                 uzmanlik: "El Ense Çekme, Tecrübe ve Kurt Güreşi",
-                memleket: "Samsun", // YENİ ALAN
+                memleket: "Samsun", 
                 bio: "2005 yılı Kırkpınar Başpehlivanıdır. 'El Ense' çekmesiyle meşhurdur, rakiplerini bu sert hamleleriyle yorar ve bozar. Er meydanının en tecrübeli ve 'kurt' güreşçilerinden biridir." 
             },
             { 
@@ -688,7 +598,7 @@
                 kariyer: "2021 İkincisi (Finalist)",
                 dogumYili: 1991, 
                 uzmanlik: "Devasa Cüsse, Kuvvetli Bağlama ve Uzun Süreli Baskı",
-                memleket: "Edirne", // YENİ ALAN
+                memleket: "Edirne", 
                 bio: "Edirne Trakya Birlik formasıyla güreşen, bölgenin en büyük umutlarından biridir. Ali Gürbüz ile benzer fiziksel özelliklere sahip, devasa bir cüsseye sahiptir. 2021 yılında final oynamış ancak ikincilikte kalmıştır. Trakya halkının çok sevdiği, tribünlerin desteğini arkasına alan güçlü bir başpehlivandır." 
             },
 
@@ -704,7 +614,7 @@
                 kariyer: "9 Kez Başpehlivan (2 Ebedi Kemer)",
                 dogumYili: 1958, 
                 uzmanlik: "Akılcı Güreş, Sırta Alma ve Sağlam Duruş",
-                memleket: "Kocaeli", // YENİ ALAN
+                memleket: "Kocaeli", 
                 bio: "Cumhuriyet tarihinin en büyük efsanelerinden biridir. 1990-2000 yılları arasına damga vurmuştur. İki kez altın kemerin ebedi sahibi olmuştur. Gücü, zekası ve karizmasıyla 'Yaşayan Efsane' olarak anılır." 
             },
             { 
@@ -718,7 +628,7 @@
                 kariyer: "1885 Başpehlivanı (Dünya Şampiyonu)",
                 dogumYili: 1857, 
                 uzmanlik: "Olağanüstü Güç, Yabancı Güreşlerde Serbest Stil",
-                memleket: "Şumnu, Bulgaristan", // YENİ ALAN
+                memleket: "Şumnu, Bulgaristan", 
                 bio: "1857-1898 yılları arasında yaşamış, Deliorman kökenli efsanevi güreşçidir. Avrupa ve Amerika'ya giderek oradaki tüm güreşçileri yenmiş, 'The Terrible Turk' (Korkunç Türk) lakabını almıştır. Muazzam bir güce sahipti." 
             },
             { 
@@ -732,7 +642,7 @@
                 kariyer: "27 Yıl Kesintisiz Başpehlivan",
                 dogumYili: 1844, 
                 uzmanlik: "Acımasızlık, Sert Bağlama ve Çengel Atma",
-                memleket: "Plevne, Bulgaristan", // YENİ ALAN
+                memleket: "Plevne, Bulgaristan", 
                 bio: "Kırkpınar tarihinde kırılması imkansız bir rekorun sahibidir: Tam 27 yıl boyunca başpehlivan olmuştur. Rakiplerine karşı acımasız ve çok sert güreştiği için 'Gaddar' lakabını almıştır. Koca Yusuf'un ve Adalı Halil'in ustasıdır." 
             },
             { 
@@ -746,7 +656,7 @@
                 kariyer: "Atatürk'ün Övdüğü Şampiyon",
                 dogumYili: 1864, 
                 uzmanlik: "Teknik Oyunlar ve Taktiksel Zeka",
-                memleket: "Balıkesir", // YENİ ALAN
+                memleket: "Balıkesir", 
                 bio: "Balıkesir Kurtdere köyündendir. Koca Yusuf ile Avrupa turnelerine çıkmış ve büyük başarılar kazanmıştır. Mustafa Kemal Atatürk, Kurtdereli'ye hayranlık duymuş ve ona bir mektup ile ödül göndermiştir." 
             },
             { 
@@ -760,7 +670,7 @@
                 kariyer: "18 Yıl Başpehlivan",
                 dogumYili: 1871, 
                 uzmanlik: "Uzun Kol Avantajı, Bel Kündesi ve Çangal",
-                memleket: "Edirne", // YENİ ALAN
+                memleket: "Edirne", 
                 bio: "Yaklaşık 1.98 boyuyla döneminin en iri pehlivanlarındandır. Kel Aliço'nun çırağıdır ve ustasını yenen nadir kişilerdendir. 18 yıl boyunca başpehlivanlık yapmıştır." 
             },
             { 
@@ -774,7 +684,7 @@
                 kariyer: "Koca Yusuf ile Yenişemedi",
                 dogumYili: 1848, 
                 uzmanlik: "Mükemmel Teknik Bilgi, Kaba Güce Karşı Oyun",
-                memleket: "Kocaeli", // YENİ ALAN
+                memleket: "Kocaeli", 
                 bio: "Koca Yusuf ile saatlerce güreşip yenişememesiyle ünlüdür. Çok teknik bir güreşçidir, kaba kuvvetten ziyade oyun bilgisiyle kazanır. Lakabı gençliğinde hırçın atları (hergele) ehlileştirmesinden gelmektedir." 
             },
             { 
@@ -788,7 +698,7 @@
                 kariyer: "8 Yıl Kesintisiz Şampiyon",
                 dogumYili: 1898, 
                 uzmanlik: "Centilmen Güreş Stili ve Yüksek Dayanıklılık",
-                memleket: "Tekirdağ", // YENİ ALAN
+                memleket: "Tekirdağ", 
                 bio: "Cumhuriyet döneminin ilk büyük başpehlivanlarındandır. 1935-1942 yılları arasında tam 8 yıl üst üste Kırkpınar başpehlivanı olarak efsaneleşmiştir. Çok centilmen olduğu için 'Alkış' soyadını almıştır." 
             },
             { 
@@ -802,7 +712,7 @@
                 kariyer: "1 Ebedi Altın Kemer (1976-78)",
                 dogumYili: 1950, 
                 uzmanlik: "Çok Yönlü Oyunlar ve Çeviklik",
-                memleket: "Kocaeli", // YENİ ALAN
+                memleket: "Kocaeli", 
                 bio: "1976, 1977 ve 1978 yıllarında üst üste üç kez başpehlivan olarak altın kemerin ebedi sahibi olmuştur. Ahmet Taşçı'nın da ustasıdır ve onu güreşe başlatan kişidir." 
             },
             { 
@@ -816,7 +726,7 @@
                 kariyer: "1 Ebedi Altın Kemer (1966-68)",
                 dogumYili: 1937, 
                 uzmanlik: "Karadeniz Oyunları, Kısa Boya Rağmen Kuvvet",
-                memleket: "Ordu", // YENİ ALAN
+                memleket: "Ordu", 
                 bio: "Karadeniz'in yetiştirdiği en büyük güreşçilerden biridir. 1966, 1967 ve 1968 yıllarında üst üste üç kez başpehlivan olarak altın kemerin ebedi sahibi olmuştur." 
             },
             { 
@@ -830,7 +740,7 @@
                 kariyer: "Tarihin En İri Pehlivanı",
                 dogumYili: 1856, 
                 uzmanlik: "Saf Güç, Muazzam Fiziksel Baskı ve Tuş Etme",
-                memleket: "Burgaz, Bulgaristan", // YENİ ALAN
+                memleket: "Burgaz, Bulgaristan", 
                 bio: "Türk güreş tarihinin fiziksel olarak en iri pehlivanlarından biridir. Boyunun 2 metrenin üzerinde, kilosunun ise 170 civarında olduğu söylenir. Avrupa'da yaptığı güreşlerde rakiplerini adeta oyuncak gibi savurmasıyla ünlenmiştir." 
             },
             { 
@@ -844,7 +754,7 @@
                 kariyer: "2 Kez Başpehlivan (1994, 1998)",
                 dogumYili: 1969, 
                 uzmanlik: "Teknik, Sakinlik ve İyi Zamanlanmış Hamleler",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "1994 ve 1998 yılları Kırkpınar Başpehlivanıdır. Ahmet Taşçı'nın hegemonyasını kıran ender isimlerden biriydi. Çok teknik, sakin ve beyefendi kişiliğiyle tanınırdı. Ne yazık ki çok genç yaşta, 43 yaşında beyin tümörü nedeniyle vefat etmiştir." 
             },
             { 
@@ -858,7 +768,7 @@
                 kariyer: "1 Ebedi Altın Kemer (1982-84)",
                 dogumYili: 1954, 
                 uzmanlik: "Azim, Dayanıklılık ve Geriye Dönük Oyunlar",
-                memleket: "Denizli", // YENİ ALAN
+                memleket: "Denizli", 
                 bio: "1982, 1983 ve 1984 yıllarında Kırkpınar Başpehlivanı olarak altın kemerin ebedi sahibi olmuştur. Sakatlanmasına rağmen güreşi bırakmamış ve azmiyle şampiyonluklara ulaşmıştır." 
             },
             { 
@@ -872,12 +782,12 @@
                 kariyer: "1988 Başpehlivanı (Ali Gürbüz'ün babası)",
                 dogumYili: 1963, 
                 uzmanlik: "Muhteşem Fizik, Yüksek Yetenek ve Boy Avantajı",
-                memleket: "Antalya", // YENİ ALAN
+                memleket: "Antalya", 
                 bio: "Ali Gürbüz'ün babasıdır. 1988 yılında Kırkpınar Başpehlivanı olmuştur. Muhteşem bir fiziğe ve yeteneğe sahipti. Ancak 1989 yılında, henüz 26 yaşındayken beyin tümörü nedeniyle vefat etmiştir. Altın kemere doyamadan aramızdan ayrılmıştır." 
             }
         ];
 
-        // --- 2. GENİŞLETİLMİŞ VE TERS KRONOLOJİK SIRALI TARİHÇE ---
+        // --- 2. TERS KRONOLOJİK SIRALI TARİHÇE ---
         const TARIHCE = [
             // Günümüzden Geriye
             { yil: 2024, ad: "Yusuf Can Zeybek", sehir: "Antalya", not: "Puanlamada kazandı. Üst üste ikinci şampiyonluk." },
@@ -959,12 +869,11 @@
             haritayiBas();
             selectleriDoldur();
             grafigiCiz(); 
-            document.getElementById('aiSimulationArea').style.display = 'none'; 
+            // AI Alanı artık kaldırıldığı için gizleme ihtiyacı yok.
         };
         
         // GÜNCEL 3. Haritayı Oluşturma
         function haritayiBas() {
-            // Harita Türkiye ve Balkanlar'a odaklanacak şekilde daha geniş bir zoom ile başlar
             var map = L.map('map').setView([40.5, 29.5], 6); 
             
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -978,7 +887,6 @@
                 iconSize: [25, 41], iconAnchor: [12, 41], popupAnchor: [1, -34], shadowSize: [41, 41]
             });
             
-            // PEHLİVANLARIN MEMLEKETLERİNİ İŞARETLE
             const memleketler = {};
             PEHLIVANLAR.forEach(p => {
                 if (!memleketler[p.memleket]) {
@@ -1005,7 +913,6 @@
                 }
             }
             
-            // Ek Edirne yapılarını da ekleyelim (Opsiyonel)
             EDIRNE_YAPILARI.forEach(n => {
                 const popupContent = `
                     <div style="text-align:center; width:200px;">
@@ -1022,201 +929,6 @@
                     .bindPopup(popupContent);
             });
         }
-
-
-        // --- CHATBOT ENTEGRASYONU İÇİN GÜNCELLENMİŞ FONKSİYON ---
-        
-        /**
-         * Tüm pehlivan verilerini toplayarak AI'a bir sistem talimatı hazırlar.
-         */
-        function prepareAllPehlivanData() {
-            let dataString = "Kırkpınar Pehlivanları Veritabanı (Mümkünse bu veriyi kullan):\n";
-            PEHLIVANLAR.forEach(p => {
-                dataString += `- ${p.ad} (${p.lakap}, ${p.tur}, ${p.memleket}). Kariyer: ${p.kariyer}. Uzmanlık: ${p.uzmanlik}\n`;
-            });
-            return dataString;
-        }
-
-        /**
-         * Persona ve tüm pehlivan verilerini içeren sistemi hazırlar.
-         */
-        function getSystemPrompt(persona, personaPehlivan) {
-            const allPehlivanData = prepareAllPehlivanData();
-            let instruction = "";
-
-            switch (persona) {
-                case 'kocayusuf':
-                    instruction = `Sen Koca Yusuf'sun. Konuşman sert, az ve öz olsun. Dünya şampiyonu olduğunu ve gücünün tüm Türk milletinden geldiğini hissettir. Modern soruları bile eski pehlivan ağzıyla cevapla. Kendi biyografin: ${personaPehlivan.bio}`;
-                    break;
-                case 'assistant':
-                default:
-                    instruction = "Sen Tarihi Kırkpınar Yağlı Güreşleri konusunda uzman, yardımsever ve bilge bir yapay zeka asistanısın. Kullanıcıların sorularını kısa, öz ve saygılı bir Türkçe ile cevaplıyorsun.";
-                    break;
-            }
-
-            // Tüm pehlivan verilerini talimata ekle
-            return instruction + "\n\n" + allPehlivanData;
-        }
-
-
-        // --- GEMINI API FONKSİYONLARI ---
-
-        /**
-         * LLM API'yi çağırır (Exponential Backoff ile)
-         */
-        async function callGemini(prompt, systemInstruction = "") {
-            const API_KEY = apiKey; 
-            if (!API_KEY) {
-                return "HATA: Gemini API Anahtarı eksik. Lütfen kodu düzenleyip anahtarınızı giriniz.";
-            }
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                config: {
-                    systemInstruction: { parts: [{ text: systemInstruction }] }
-                }
-            };
-
-            for (let i = 0; i < 5; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        // API Hata mesajı kontrolü (Anahtar sorunu)
-                        if (errorData.error && errorData.error.message.includes("API key not valid")) {
-                           return "HATA: API Anahtarı Geçersiz. Lütfen Google Console veya AI Studio'dan anahtarınızı kontrol edin.";
-                        }
-                        // Diğer genel HTTP hataları
-                        throw new Error(`HTTP Hata: ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Üzgünüm, şu an cevap üretemiyorum.";
-                } catch (e) {
-                    // Bağlantı hatası durumunda 5 kez dener, sonra genel hata mesajı verir.
-                    if (i === 4) {
-                            // Bağlantı tamamen kesikse veya genel hata varsa bu mesaj döner
-                        return "Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin veya internet bağlantınızı ve sunucunuzu kontrol edin.";
-                    }
-                    await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
-                }
-            }
-            return "Bağlantı hatası oluştu. Lütfen daha sonra tekrar deneyin.";
-        }
-        
-        /**
-         * ✨ AI Form Analizi (MODAL İÇİN YENİ ÖZELLİK)
-         */
-        async function analyzeForm(pehlivanId) {
-            const p = PEHLIVANLAR.find(x => x.id === pehlivanId);
-            const resultBox = document.getElementById('aiFormAnalysisResult');
-
-            resultBox.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:var(--gold)"></i> Yapay Zeka Pehlivanı Analiz Ediyor...';
-            
-            const analysisPrompt = `
-                Aşağıdaki pehlivanın biyografi, lakap, kariyer ve **uzmanlık** bilgilerini kullanarak, sadece güncel form durumuna odaklanan kısa ve keskin bir analiz yap.
-                1. Pehlivanın en güçlü olduğu güreş tekniğini veya fiziksel avantajını (Boy, Kilo, Kondisyon vb.) belirt.
-                2. Rakibine karşı zayıf kalabileceği olası bir noktayı (yaş, yavaşlık, rakibin özel bir tekniği vb.) tahmin et.
-                3. Analizi 4-5 kısa cümleyle özetle.
-                
-                Pehlivan: ${p.ad} (${p.lakap}), Boy: ${p.boy} cm, Kilo: ${p.kilo} kg. Uzmanlık: ${p.uzmanlik}. Kariyer Özeti: ${p.kariyer}.
-                Biyografi: ${p.bio}
-            `;
-
-            const systemPrompt = "Sen bir spor yorumcusu ve analistisin. Sadece güncel performans tahminleri yap.";
-            const analysis = await callGemini(analysisPrompt, systemPrompt);
-
-            const cleanText = analysis.replace(/\*\*/g, '<strong>').replace(/\n/g, '<br>');
-            resultBox.innerHTML = `<strong style="color:var(--gold)"><i class="fas fa-chart-line"></i> AI Form Analizi:</strong><br>${cleanText}`;
-        }
-
-
-        /**
-         * ✨ AI Maç Simülasyonu
-         */
-        async function simulateMatch() {
-            const id1 = document.getElementById("sel1").value;
-            const id2 = document.getElementById("sel2").value;
-            
-            if (isNaN(id1) || isNaN(id2)) return;
-
-            const p1 = PEHLIVANLAR.find(p => p.id == id1);
-            const p2 = PEHLIVANLAR.find(p => p.id == id2);
-            
-            const resultBox = document.getElementById('aiSimulationResult');
-            resultBox.style.display = 'block';
-            resultBox.innerHTML = '<i class="fas fa-spinner fa-spin" style="color:var(--gold)"></i> Spiker maçı yorumluyor, lütfen bekleyin...';
-
-            const prompt = `
-                Aşağıdaki iki başpehlivan arasında geçen tarihi Kırkpınar final maçını, pehlivanların fiziksel özelliklerine, lakaplarına, biyografilerine ve **uzmanlık alanlarına** dayanarak canlı bir spiker gibi heyecanlı ve edebi bir dille anlat. 
-                Kazananı pehlivanların özelliklerini karşılaştırarak mantıklı bir şekilde belirle ve senaryoyu sürprizli bir sonla bitir. Kısa bir paragraf olsun (Maksimum 120 kelime).
-
-                Pehlivan 1: ${p1.ad} (${p1.lakap}), Boy: ${p1.boy} cm, Kilo: ${p1.kilo} kg. Uzmanlık: ${p1.uzmanlik}. Memleket: ${p1.memleket}. Biyografi Özeti: ${p1.bio}
-                Pehlivan 2: ${p2.ad} (${p2.lakap}), Boy: ${p2.boy} cm, Kilo: ${p2.kilo} kg. Uzmanlık: ${p2.uzmanlik}. Memleket: ${p2.memleket}. Biyografi Özeti: ${p2.bio}
-            `;
-
-            const systemPrompt = "Sen coşkulu, şiirsel ve Kırkpınar güreş kurallarına hakim bir Cazgır/Spiker karışımı yapay zekasın. Maçı bir tiyatro oyunu gibi anlat.";
-            const commentary = await callGemini(prompt, systemPrompt);
-
-            const cleanText = commentary.replace(/\*\*/g, '<strong>').replace(/\n/g, '<br>');
-            resultBox.innerHTML = `<strong style="color:var(--gold)">🎙️ Er Meydanı Canlı Yorumu:</strong><br><br>${cleanText}`;
-        }
-        
-        /**
-         * 🤖 Kırkpınar Asistanı Chatbot Fonksiyonları
-         */
-
-        function toggleChat() { 
-            const box = document.getElementById('chatBox'); 
-            box.style.display = box.style.display === 'flex' ? 'none' : 'flex'; 
-            if (box.style.display === 'flex') {
-                document.getElementById('chatInput').focus();
-            }
-        }
-
-        function handleEnter(e) { 
-            if (e.key === 'Enter') sendMessage(); 
-        }
-
-        async function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const msg = input.value.trim();
-            if(!msg) return;
-
-            const personaValue = document.getElementById('personaSelect').value;
-            let personaPehlivan = null;
-            
-            if (personaValue === 'kocayusuf') {
-                personaPehlivan = PEHLIVANLAR.find(p => p.ad === "Koca Yusuf");
-            }
-            
-            const systemPrompt = getSystemPrompt(personaValue, personaPehlivan);
-            
-            const chatMessages = document.getElementById('chatMessages');
-            chatMessages.innerHTML += `<div class="message user-msg">${msg}</div>`;
-            input.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = 'message bot-msg';
-            loadingDiv.innerHTML = '<i class="fas fa-ellipsis-h fa-beat"></i>'; // Yazıyor animasyonu
-            chatMessages.appendChild(loadingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            const response = await callGemini(msg, systemPrompt);
-
-            chatMessages.removeChild(loadingDiv);
-            const formattedResponse = response.replace(/\*\*/g, '<strong>').replace(/\n/g, '<br>'); // Markdown temizliği
-            chatMessages.innerHTML += `<div class="message bot-msg">${formattedResponse}</div>`;
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
 
         // 1. Kartları Listeleme
         function pehlivanlariBas(data) {
@@ -1240,7 +952,7 @@
             const tbody = document.querySelector("#tarihceTable tbody");
             tbody.innerHTML = "";
             
-            data.sort((a, b) => b.yil - a.yil); // Günümüzden geçmişe sırala
+            data.sort((a, b) => b.yil - a.yil); 
 
             data.forEach(t => {
                 tbody.innerHTML += `
@@ -1273,12 +985,10 @@
             const id1 = document.getElementById("sel1").value;
             const id2 = document.getElementById("sel2").value;
             
-            const aiArea = document.getElementById('aiSimulationArea');
             const resultBox = document.getElementById("compResult");
 
             if (id1 === "" || id2 === "" || id1 === id2) {
                  resultBox.style.display = "none";
-                 aiArea.style.display = 'none';
                  return;
             }
 
@@ -1287,7 +997,6 @@
             
             if (!p1 || !p2) {
                  resultBox.style.display = "none";
-                 aiArea.style.display = 'none';
                  return;
             }
 
@@ -1295,8 +1004,6 @@
             const bmi2 = calculateBMI(p2.boy, p2.kilo);
 
             document.getElementById("compResult").style.display = "flex";
-            aiArea.style.display = 'block'; 
-            document.getElementById('aiSimulationResult').innerHTML = ""; 
 
             document.getElementById("cImg1").src = p1.img;
             document.getElementById("cName1").innerText = p1.ad;
@@ -1419,8 +1126,6 @@
             document.getElementById("mBio").innerText = p.bio;
             document.getElementById("mUzmanlik").innerText = p.uzmanlik;
             
-            document.getElementById("aiFormAnalysisResult").innerHTML = "AI Form Analizi için butona tıklayınız."; 
-
             document.getElementById("bioModal").style.display = "flex";
         }
 
