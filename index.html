@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarihi Kırkpınar Arşivi | Genişletilmiş Ansiklopedi (AI Kaldırıldı)</title>
+    <title>Tarihi Kırkpınar Arşivi | Genişletilmiş Ansiklopedi (Nihai Sürüm)</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,10 +54,38 @@
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 15px; }
         .gold { color: var(--gold); }
 
-        /* Pehlivan Kartları */
+        /* --- PEHLİVAN KARTLARI (ER MEYDANI) İYİLEŞTİRMELERİ --- */
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
-        .card { background: var(--dark-gray); border-radius: 8px; overflow: hidden; border: 1px solid #333; cursor: pointer; transition: 0.3s; position: relative; }
-        .card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 5px 15px rgba(212,175,55,0.2); }
+        .card { 
+            background: var(--dark-gray); 
+            border-radius: 8px; 
+            overflow: hidden; 
+            border: 1px solid #333; 
+            cursor: pointer; 
+            transition: 0.4s; 
+            position: relative; 
+            /* Animasyon Ayarı */
+            animation: fadeInSlide 0.8s ease-out both;
+        }
+        
+        /* Efsane Kart Vurgusu */
+        .card-efsane {
+            border: 2px solid var(--gold) !important;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hover Efekti */
+        .card:hover { 
+            transform: scale(1.03) translateY(-5px); 
+            border-color: var(--gold); 
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5); 
+            z-index: 10;
+        }
         .card-img { width: 100%; height: 300px; object-fit: cover; object-position: top center; background: #222; }
         .card-info { padding: 15px; text-align: center; }
         .card-badge { position: absolute; top: 10px; right: 10px; background: var(--gold); color: #000; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; z-index: 2; }
@@ -105,10 +133,10 @@
             width: 350px; 
             border: 2px solid #444; 
             transition: 0.3s;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 10px rgba(212,175,55,0.2);
         }
         .res-card:hover {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212,175,55,0.4);
         }
         
         .res-card img { 
@@ -239,42 +267,117 @@
             height: 600px; 
         }
         
-        /* Grafik Canvas'ı için sabit genişlik ayarı kaldırıldı, responsive kullanacak */
-        #combinedChartCanvas {
-            width: 100% !important;
-            height: 100% !important;
+        /* Sözlük Stili */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .glossary-card {
+            background: var(--dark-gray);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+        .glossary-card h4 {
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        .glossary-card p {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+        .glossary-card p strong {
+            color: var(--light-gray);
         }
 
+        /* Medya Bağlantıları Stili */
+        .link-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+        .link-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .link-card a {
+            font-weight: bold;
+            color: var(--gold);
+            display: block;
+            margin-top: 10px;
+        }
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Edirne Bölümü Stilleri */
+        .edirne-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .edirne-card {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            align-items: flex-start;
+            border: 1px solid #333;
+        }
+        .edirne-card.reverse {
+            flex-direction: row-reverse;
+        }
+        .edirne-img {
+            width: 40%;
+            min-width: 300px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .edirne-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .edirne-text h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 5px;
+        }
+        .edirne-text p {
+            line-height: 1.6;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 992px) {
+            .edirne-card, .edirne-card.reverse {
+                flex-direction: column;
+                align-items: center;
+            }
+            .edirne-img {
+                width: 100%;
+                min-width: unset;
+            }
+        }
         /* Footer */
         footer { text-align: center; padding: 30px; background: #000; border-top: 1px solid #222; color: #777; margin-top: 50px; }
-
-        @media (max-width: 1024px) {
-            .chart-container-half {
-                min-width: 100%; 
-                height: 350px;
-            }
-            .kıyaslama-wrapper {
-                flex: 1;
-                min-width: 100%;
-            }
-            .grafik-wrapper {
-                flex: 1;
-                min-width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; padding: 10px; }
-            .nav-links { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-            .modal-content { flex-direction: column; align-items: center; text-align: center; height: auto; max-height: 90vh; }
-            .hero h1 { font-size: 2.5rem; }
-            .compare-area { flex-direction: column; align-items: center; }
-            .result-box { flex-direction: column; gap: 20px; }
-            .vs-badge-large { margin: 10px 0; }
-            #analiz > div {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body>
@@ -284,8 +387,11 @@
         <div class="nav-links">
             <a href="#tarihce">Tarihçe</a>
             <a href="#pehlivanlar">Pehlivanlar</a>
-            <a href="#harita">Edirne Haritası</a>
+            <a href="#edirne">Edirne</a>
+            <a href="#harita">Harita</a>
             <a href="#analiz">Analiz</a>
+            <a href="#sozluk">Sözlük</a>
+            <a href="#medya">Medya</a>
         </div>
     </nav>
 
@@ -339,6 +445,90 @@
         </div>
     </section>
 
+    <section id="edirne" class="container">
+        <h2 class="section-title">KIRKPINAR'IN KALBİ: <span class="gold">EDİRNE</span></h2>
+        
+        <div class="edirne-section">
+            
+            <div class="edirne-card">
+                <img src="img/selimiye.jpg" alt="Selimiye Camii" class="edirne-img" onerror="imgError(this)">
+                <div class="edirne-text">
+                    <h3><i class="fas fa-landmark"></i> Mimar Sinan'ın Ustalık Eseri: Selimiye</h3>
+                    <p>Edirne denince akla gelen ilk yapı, Mimar Sinan'ın **"ustalık eserim"** dediği **Selimiye Camii**'dir. 1569-1575 yılları arasında inşa edilen bu eser, Osmanlı klasik dönem mimarisinin zirvesidir. 43.25 metre yüksekliğindeki devasa kubbesi ve her biri üç ayrı merdivenle çıkılan dört zarif minaresi ile teknik ve estetik dehanın örneğidir. Selimiye, UNESCO Dünya Mirası Listesi'ndedir.</p>
+                </div>
+            </div>
+
+            <div class="edirne-card reverse">
+                <img src="img/tava_cigeri.jpg" alt="Edirne Tava Ciğeri" class="edirne-img" onerror="imgError(this)">
+                <div class="edirne-text">
+                    <h3><i class="fas fa-utensils"></i> Edirne Lezzetleri: Tava Ciğeri ve Miras Tatlar</h3>
+                    <p>Edirne mutfağı, Balkan ve saray mutfaklarının izlerini taşır. Şehrin tartışmasız sembolü, incecik kesilen ve bol kızgın yağda pişirilen **Edirne Tava Ciğeri**'dir. Yanında sunulan kuru acı biber ile eşsiz bir lezzet şöleni sunar. Ayrıca saraydan günümüze ulaşan **Badem Ezmesi** ve kaliteli **Edirne Peyniri** de şehrin gastronomi mirasının önemli parçalarıdır.</p>
+                </div>
+            </div>
+
+            <div class="edirne-card">
+                <img src="img/bayezid_kulliyesi.jpg" alt="II. Bayezid Külliyesi (Sağlık Müzesi)" class="edirne-img" onerror="imgError(this)">
+                <div class="edirne-text">
+                    <h3><i class="fas fa-hospital-user"></i> Tarihi Külliyeler ve Başkentlik Geçmişi</h3>
+                    <p>Edirne, 1363–1453 yılları arasında Osmanlı İmparatorluğu'na başkentlik yapmıştır. Bu dönemden kalan en önemli yapılar arasında, su ve müzikle tedavi yapılan dünyanın en büyük tıp komplekslerinden **II. Bayezid Külliyesi (Sağlık Müzesi)** yer alır. Meriç ve Tunca nehirleri üzerindeki tarihi taş köprüler de şehrin stratejik ve kültürel önemini vurgular.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="sozluk" class="container"> 
+        <h2 class="section-title">GÜREŞ TEKNİKLERİ <span class="gold">SÖZLÜĞÜ</span></h2>
+        <p style="text-align:center; margin-bottom:20px; color:#aaa;">Pehlivanların uzmanlıklarında geçen teknik terimlerin anlamları ve o oyunda yetkin pehlivanlar.</p>
+        <div class="glossary-grid" id="teknikSozluk">
+            </div>
+    </section>
+    
+    <section id="medya" class="container">
+        <h2 class="section-title">RESMİ BAĞLANTILAR VE <span class="gold">MAÇ ARŞİVİ</span></h2>
+        
+        <h3 style="color:var(--gold); margin-top:30px; border-bottom:1px solid #333; padding-bottom:10px;"><i class="fas fa-link"></i> Kurumsal Bağlantılar (Canlı Yayın Bilgisi)</h3>
+        <p style="color:#ccc; margin-top:10px; margin-bottom:20px;">Kırkpınar ve güreş dünyası hakkında güncel bilgileri takip edebileceğiniz resmi siteler:</p>
+        <div class="link-card-grid">
+            <div class="link-card">
+                <h4> Türkiye Güreş Federasyonu</h4>
+                <p>Türkiye'deki tüm güreş etkinliklerini ve duyurularını takip edin.</p>
+                <a href="https://tgf.tr/" target="_blank">Federasyon Sitesine Git</a>
+            </div>
+            <div class="link-card">
+                <h4> Edirne Kırkpınar Resmi Sitesi</h4>
+                <p>Kırkpınar tarihi, ağalığı ve ritüelleri hakkında detaylı bilgi.</p>
+                <a href="https://edirnekirkpinar.com/tr" target="_blank">Resmi Siteye Git</a>
+            </div>
+            <div class="link-card">
+                <h4> Canlı Yayın Bilgisi</h4>
+                <p>Tarihi Kırkpınar Yağlı Güreşleri'nin canlı yayınları genellikle **TRT Spor** veya **TRT Spor Yıldız** kanallarında yapılmaktadır.</p>
+                <a href="https://tgf.tr/turkiye-gures-fed-canli-izle/" target="_blank">Güreş Federasyonu Canlı Yayın</a>
+            </div>
+        </div>
+
+        <h3 style="color:var(--gold); margin-top:60px; border-bottom:1px solid #333; padding-bottom:10px;"><i class="fab fa-youtube"></i> Tarihi Maç Özetleri (YouTube)</h3>
+        <p style="color:#ccc; margin-top:10px; margin-bottom:20px;">Yakın tarihin unutulmaz Kırkpınar final maçlarından kesitler:</p>
+        
+        <div class="link-card-grid">
+            <div class="link-card" style="min-height: 200px;">
+                <h4> Ali Gürbüz - İsmail Koç (2021 Final)</h4>
+                <p style="font-size: 0.9rem;">660. Tarihi Kırkpınar Yağlı Güreşleri finali.</p>
+                <a href="https://www.youtube.com/watch?v=Hsq_UL48Q9c" target="_blank">Özeti İzle</a>
+            </div>
+             <div class="link-card" style="min-height: 200px;">
+                <h4> Ali Gürbüz - Orhan Okulu (2019 Final Özeti)</h4>
+                <p style="font-size: 0.9rem;">658. Tarihi Kırkpınar Yağlı Güreşleri Final Maçı Özeti.</p>
+                <a href="https://www.youtube.com/watch?v=9Fd8dVwX_OE" target="_blank">Özeti İzle</a>
+            </div>
+            <div class="link-card" style="min-height: 200px;">
+                <h4> 664. Kırkpınar Yağlı Güreşleri (Özet)</h4>
+                <p style="font-size: 0.9rem;">Yakın döneme ait güreş müsabakalarından bir kesit.</p>
+                <a href="https://www.youtube.com/watch?v=hpfO7JohT1w" target="_blank">Güreşleri İzle</a>
+            </div>
+        </div>
+
+    </section>
+
     <section id="harita" class="container">
         <h2 class="section-title">PEHLİVANLARIN <span class="gold">MEMLEKET HARİTASI</span></h2>
         <p style="text-align:center; margin-bottom:20px; color:#aaa;">Harita üzerindeki işaretlere tıklayarak pehlivanların memleketlerini görebilirsiniz.</p>
@@ -390,9 +580,15 @@
                             <span id="cCareer2"></span>
                         </div>
                     </div>
+
+                    <div id="bgeSummary" style="width: 100%; text-align: center; margin-top: 30px; padding: 15px; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                        <h4 class="gold" style="font-size: 1.5rem;"><i class="fas fa-weight-scale"></i> BASİT GÜÇ ENDEKSİ (BGE) SONUCU</h4>
+                        <p id="bgeScoreText" style="font-size: 1.8rem; font-family: 'Cinzel', serif; font-weight: bold; margin-top: 10px;"></p>
+                        <p id="bgeWinnerText" style="font-size: 1.2rem; margin-top: 5px; font-style: italic;"></p>
+                    </div>
+
                 </div>
-                
-                </div>
+            </div>
 
             <div class="grafik-wrapper chart-and-list-area" style="width: 100%;">
                 <h3 style="color:var(--gold); margin-bottom: 20px; text-align:center; border-bottom: 1px solid #333; padding-bottom: 10px;">Fiziksel Analiz (Tüm Pehlivanlar)</h3>
@@ -432,7 +628,7 @@
                     <span id="mUzmanlik"></span> 
                 </div>
 
-                </div>
+            </div>
         </div>
     </div>
     
@@ -442,9 +638,7 @@
     </footer>
 
     <script>
-        // Yapay Zeka (AI) API ile ilgili tüm kodlar kaldırıldı.
         
-        // Yeni Alan: memleket (Harita için eklendi)
         const PEHLIVANLAR = [
             // --- AKTİF BAŞPEHLİVANLAR ---
             { 
@@ -786,6 +980,19 @@
                 bio: "Ali Gürbüz'ün babasıdır. 1988 yılında Kırkpınar Başpehlivanı olmuştur. Muhteşem bir fiziğe ve yeteneğe sahipti. Ancak 1989 yılında, henüz 26 yaşındayken beyin tümörü nedeniyle vefat etmiştir. Altın kemere doyamadan aramızdan ayrılmıştır." 
             }
         ];
+        
+        // Teknik oyunların tanımları
+        const TEKNIK_OYUNLAR = {
+            "Çangal": "Rakibin bacakları arasına girerek ayağını ya da paçasını yakalama ve ani çevirme oyunu.",
+            "Künde": "Rakibin sırtına geçip onu ayaklarından veya belinden yakalayarak havada çevirip yere vurma veya tuş etme oyunu.",
+            "Tırpan": "Ayak oyunlarının en etkililerinden biridir. Rakibin ayağını biçer gibi dışarıdan alıp dengesini bozarak düşürme tekniğidir.",
+            "Paça Kazık": "Rakibin paçasını yakalayıp diğer el ile koltuk altından tutarak yapılan, ani ve agresif bir düşürme tekniği.",
+            "Sırta Alma": "Genellikle ağır sikletlerin kullandığı, rakibin sırtına yüklenerek onu yerden kesme ve çömeltme tekniği.",
+            "Bel Kündesi": "Rakibi belinden kavrayarak yerden kesme ve havada döndürerek yere çalma tekniği.",
+            "İç Kazık": "Rakibin bacaklarının iç kısmından yapılan, rakiyi geriye doğru dengesiz bırakma ve düşürme oyunu.",
+            "El Ense Çekme": "Rakibin ensesinden sert bir şekilde bastırarak dengesini bozma ve gücünü yorma tekniği."
+        };
+
 
         // --- 2. TERS KRONOLOJİK SIRALI TARİHÇE ---
         const TARIHCE = [
@@ -836,7 +1043,7 @@
             { yil: 1361, ad: "Ali ve Selim", sehir: "Bursa", not: "İlk güreşte yenişemeyip can verdikleri efsane başlangıç." }
         ];
 
-        // Şehirlerin harita koordinatları (Ortalama merkez noktaları)
+        // Şehirlerin harita koordinatları
         const SEHIR_KOORDINATLARI = {
             "Antalya": { lat: 36.8848, lng: 30.7040 },
             "Ordu": { lat: 40.9885, lng: 37.8763 },
@@ -847,12 +1054,13 @@
             "Tekirdağ": { lat: 40.9839, lng: 27.5135 },
             "Denizli": { lat: 37.7833, lng: 29.0910 },
             "Balıkesir": { lat: 39.6540, lng: 27.8903 },
-            "Şumnu, Bulgaristan": { lat: 43.2721, lng: 26.9200 }, // Koca Yusuf
-            "Plevne, Bulgaristan": { lat: 43.4072, lng: 24.6190 }, // Kel Aliço
-            "Burgaz, Bulgaristan": { lat: 42.5029, lng: 27.4721 } // Filiz Nurullah
+            "Şumnu, Bulgaristan": { lat: 43.2721, lng: 26.9200 }, 
+            "Plevne, Bulgaristan": { lat: 43.4072, lng: 24.6190 }, 
+            "Burgaz, Bulgaristan": { lat: 42.5029, lng: 27.4721 } 
         };
 
         // Ek Edirne yapıları (Harita için opsiyonel)
+        // NOT: Bu görsellerin img/ klasöründe bulunduğundan emin olun.
         const EDIRNE_YAPILARI = [
             { lat: 41.693, lng: 26.555, title: "Kırkpınar Er Meydanı", desc: "Tarihi güreşlerin yapıldığı stadyum.", img: "img/er_meydani.jpg" },
             { lat: 41.678, lng: 26.559, title: "Selimiye Camii", desc: "Mimar Sinan'ın Ustalık Eseri (UNESCO).", img: "img/selimiye.jpg" },
@@ -869,8 +1077,56 @@
             haritayiBas();
             selectleriDoldur();
             grafigiCiz(); 
-            // AI Alanı artık kaldırıldığı için gizleme ihtiyacı yok.
+            sozlukDoldur(); 
         };
+        
+        /* =======================================
+           YENİ FONKSİYON: SÖZLÜK DOLDURUCU
+        ======================================= */
+        function sozlukDoldur() {
+            const sozlukDiv = document.getElementById("teknikSozluk");
+            let htmlContent = '';
+            
+            // Hangi pehlivanın hangi oyunda uzman olduğunu bulmak için ters harita oluştur
+            const uzmanPehlivanlar = {};
+            PEHLIVANLAR.forEach(p => {
+                // Uzmanlık alanlarını virgül ile ayırıp temizle
+                const uzmanliklar = p.uzmanlik.split(',').map(s => s.trim());
+                uzmanliklar.forEach(uzmanlik => {
+                    // Anahtar kelimeleri (Çangal, Künde vb.) bul
+                    const terim = Object.keys(TEKNIK_OYUNLAR).find(t => uzmanlik.includes(t));
+                    if (terim) {
+                        if (!uzmanPehlivanlar[terim]) {
+                            uzmanPehlivanlar[terim] = [];
+                        }
+                        // Pehlivan adını listeye ekle, eğer listede yoksa
+                        if (!uzmanPehlivanlar[terim].includes(p.ad)) {
+                            uzmanPehlivanlar[terim].push(p.ad);
+                        }
+                    }
+                });
+            });
+
+            // Sözlüğü doldur
+            for (const terim in TEKNIK_OYUNLAR) {
+                const aciklama = TEKNIK_OYUNLAR[terim];
+                const pehlivanListesi = uzmanPehlivanlar[terim] ? uzmanPehlivanlar[terim].join(', ') : 'Belirtilmemiş';
+
+                htmlContent += `
+                    <div class="glossary-card">
+                        <h4><i class="fas fa-book-open"></i> ${terim}</h4>
+                        <p>${aciklama}</p>
+                        <p style="margin-top: 10px;"><strong>Uzman Pehlivanlar:</strong> ${pehlivanListesi}</p>
+                    </div>
+                `;
+            }
+
+            sozlukDiv.innerHTML = htmlContent;
+        }
+
+        /* =======================================
+           ESKİ FONKSİYONLARIN DEVAMI
+        ======================================= */
         
         // GÜNCEL 3. Haritayı Oluşturma
         function haritayiBas() {
@@ -913,11 +1169,12 @@
                 }
             }
             
+            // Harita görsel hatası düzeltmesi yapılmış döngü
             EDIRNE_YAPILARI.forEach(n => {
                 const popupContent = `
                     <div style="text-align:center; width:200px;">
                         <h4 style="color:#333; margin-bottom:5px;">${n.title}</h4>
-                        <img src="img/er_meydani.jpg" style="width:100%; height:100px; object-fit:cover; border-radius:5px; margin-bottom:5px;" onerror="imgError(this)">
+                        <img src="${n.img}" style="width:100%; height:100px; object-fit:cover; border-radius:5px; margin-bottom:5px;" onerror="imgError(this)">
                         <p style="font-size:0.8rem; color:#666;">${n.desc}</p>
                     </div>`;
                 
@@ -930,57 +1187,52 @@
             });
         }
 
-        // 1. Kartları Listeleme
-        function pehlivanlariBas(data) {
-            const grid = document.getElementById("pehlivanGrid");
-            grid.innerHTML = "";
-            data.forEach(p => {
-                grid.innerHTML += `
-                <div class="card" onclick="modalAc(${p.id})">
-                    <span class="card-badge">${p.tur}</span>
-                    <img class="card-img" src="${p.img}" alt="${p.ad}" onerror="imgError(this)">
-                    <div class="card-info">
-                        <h3 style="color:#fff;">${p.ad}</h3>
-                        <p class="gold" style="font-size:0.9rem;">"${p.lakap}"</p>
-                    </div>
-                </div>`;
-            });
+        // Kariyerdeki şampiyonluk sayısını sayan yardımcı fonksiyon (BGE için gerekli)
+        function countChampionships(kariyer) {
+            const match = kariyer.match(/(\d+)\s+Kez Başpehlivan/);
+            if (match) {
+                return parseInt(match[1]);
+            }
+            if (kariyer.includes('Ebedi Altın Kemer')) {
+                return 3; 
+            }
+            if (kariyer.match(/\d{4} Başpehlivan/) || kariyer.includes('Finalist')) {
+                return 1;
+            }
+            return 0;
         }
 
-        // 2. Tabloyu Doldurma
-        function tabloyuBas(data) {
-            const tbody = document.querySelector("#tarihceTable tbody");
-            tbody.innerHTML = "";
+        // Yeni BGE Puanlamasını yapan fonksiyon
+        function calculateBGE(p1, p2) {
+            let score1 = 0;
+            let score2 = 0;
+
+            // Kriter 1 & 2: Boy ve Kilo (Her birine 1 puan)
+            if (p1.boy > p2.boy) score1++;
+            else if (p2.boy > p1.boy) score2++;
+
+            if (p1.kilo > p2.kilo) score1++;
+            else if (p2.kilo > p1.kilo) score2++;
+
+            // Kriter 3: Tecrübe (Şampiyonluk) (2 puan)
+            const champ1 = countChampionships(p1.kariyer);
+            const champ2 = countChampionships(p2.kariyer);
+
+            if (champ1 > champ2) score1 += 2;
+            else if (champ2 > champ1) score2 += 2;
+
+            // Kriter 4: Uzmanlık Tipi (1 puan)
+            const powerWords = ["güç", "baskı", "muazzam", "olağanüstü", "sert", "dev"]; 
+            const uzm1 = p1.uzmanlik.toLowerCase();
+            const uzm2 = p2.uzmanlik.toLowerCase();
+
+            if (powerWords.some(word => uzm1.includes(word))) score1++;
+            if (powerWords.some(word => uzm2.includes(word))) score2++;
             
-            data.sort((a, b) => b.yil - a.yil); 
-
-            data.forEach(t => {
-                tbody.innerHTML += `
-                <tr>
-                    <td><span style="background:var(--gold); color:#000; padding:2px 6px; border-radius:4px; font-weight:bold;">${t.yil}</span></td>
-                    <td style="font-weight:bold; color:#fff;">${t.ad}</td>
-                    <td>${t.sehir}</td>
-                    <td style="font-size:0.85rem; color:#aaa;">${t.not}</td>
-                </tr>`;
-            });
+            return { score1, score2, champ1, champ2 };
         }
 
-        // Kıyaslama ve yardımcı fonksiyonlar
-        function selectleriDoldur() {
-            const s1 = document.getElementById("sel1");
-            const s2 = document.getElementById("sel2");
-            PEHLIVANLAR.forEach(p => {
-                let opt = `<option value="${p.id}">${p.ad}</option>`;
-                s1.innerHTML += opt;
-                s2.innerHTML += opt;
-            });
-        }
-        
-        function calculateBMI(boyCm, kiloKg) {
-            const boyM = boyCm / 100;
-            return (kiloKg / (boyM * boyM)).toFixed(2);
-        }
-
+        // Ana kıyaslama fonksiyonu
         function kiyasla() {
             const id1 = document.getElementById("sel1").value;
             const id2 = document.getElementById("sel2").value;
@@ -1000,11 +1252,27 @@
                  return;
             }
 
+            const bgeResult = calculateBGE(p1, p2);
             const bmi1 = calculateBMI(p1.boy, p1.kilo);
             const bmi2 = calculateBMI(p2.boy, p2.kilo);
 
-            document.getElementById("compResult").style.display = "flex";
+            resultBox.style.display = "flex";
+            
+            // BGE ÖZETİNİ GÖSTER
+            document.getElementById("bgeScoreText").innerHTML = `<span class="gold">${p1.ad}</span> (${bgeResult.score1}) <span style="color:#fff;">|</span> <span class="gold">${p2.ad}</span> (${bgeResult.score2})`;
 
+            let winnerText = "";
+            if (bgeResult.score1 > bgeResult.score2) {
+                winnerText = `<i class="fas fa-crown winner"></i> ${p1.ad}, Basit Güç Endeksi'nde avantajlıdır.`;
+            } else if (bgeResult.score2 > bgeResult.score1) {
+                winnerText = `<i class="fas fa-crown winner"></i> ${p2.ad}, Basit Güç Endeksi'nde avantajlıdır.`;
+            } else {
+                winnerText = "Endeks skorları berabere. Güreşte her şey olabilir!";
+            }
+            document.getElementById("bgeWinnerText").innerHTML = winnerText;
+
+
+            // Kalan Kart Detaylarını Doldurma
             document.getElementById("cImg1").src = p1.img;
             document.getElementById("cName1").innerText = p1.ad;
             document.getElementById("cTur1").innerText = p1.tur;
@@ -1012,7 +1280,8 @@
             document.getElementById("cKilo1").innerText = p1.kilo;
             document.getElementById("cUzmanlik1").innerText = p1.uzmanlik;
             document.getElementById("cBMI1").innerText = bmi1;
-            document.getElementById("cCareer1").innerText = p1.kariyer;
+            document.getElementById("cCareer1").innerText = `Şampiyonluk Sayısı: ${bgeResult.champ1}. ${p1.kariyer}`;
+
 
             document.getElementById("cImg2").src = p2.img;
             document.getElementById("cName2").innerText = p2.ad;
@@ -1021,11 +1290,63 @@
             document.getElementById("cKilo2").innerText = p2.kilo;
             document.getElementById("cUzmanlik2").innerText = p2.uzmanlik;
             document.getElementById("cBMI2").innerText = bmi2;
-            document.getElementById("cCareer2").innerText = p2.kariyer;
+            document.getElementById("cCareer2").innerText = `Şampiyonluk Sayısı: ${bgeResult.champ2}. ${p2.kariyer}`;
+
 
             highlight("cBoy1", "cBoy2", p1.boy, p2.boy, 'max'); 
             highlight("cKilo1", "cKilo2", p1.kilo, p2.kilo, 'max'); 
             highlight("cBMI1", "cBMI2", bmi1, bmi2, 'min'); 
+        }
+        
+        // 1. Kartları Listeleme (Animasyon ve Efsane Vurgusu eklendi)
+        function pehlivanlariBas(data) {
+            const grid = document.getElementById("pehlivanGrid");
+            grid.innerHTML = "";
+            data.forEach((p, index) => { // index değişkeni animasyon için eklendi
+                const efsaneClass = p.tur === 'Efsane' ? 'card-efsane' : ''; // Efsane sınıfı kontrolü
+                
+                grid.innerHTML += `
+                <div class="card ${efsaneClass}" onclick="modalAc(${p.id})" style="animation-delay: ${index * 0.05}s;"> 
+                    <span class="card-badge">${p.tur}</span>
+                    <img class="card-img" src="${p.img}" alt="${p.ad}" onerror="imgError(this)">
+                    <div class="card-info">
+                        <h3 style="color:#fff;">${p.ad}</h3>
+                        <p class="gold" style="font-size:0.9rem;">"${p.lakap}"</p>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function tabloyuBas(data) {
+            const tbody = document.querySelector("#tarihceTable tbody");
+            tbody.innerHTML = "";
+            
+            data.sort((a, b) => b.yil - a.yil); 
+
+            data.forEach(t => {
+                tbody.innerHTML += `
+                <tr>
+                    <td><span style="background:var(--gold); color:#000; padding:2px 6px; border-radius:4px; font-weight:bold;">${t.yil}</span></td>
+                    <td style="font-weight:bold; color:#fff;">${t.ad}</td>
+                    <td>${t.sehir}</td>
+                    <td style="font-size:0.85rem; color:#aaa;">${t.not}</td>
+                </tr>`;
+            });
+        }
+
+        function selectleriDoldur() {
+            const s1 = document.getElementById("sel1");
+            const s2 = document.getElementById("sel2");
+            PEHLIVANLAR.forEach(p => {
+                let opt = `<option value="${p.id}">${p.ad}</option>`;
+                s1.innerHTML += opt;
+                s2.innerHTML += opt;
+            });
+        }
+        
+        function calculateBMI(boyCm, kiloKg) {
+            const boyM = boyCm / 100;
+            return (kiloKg / (boyM * boyM)).toFixed(2);
         }
         
         function highlight(id1, id2, v1, v2, type) {
@@ -1150,7 +1471,8 @@
 
         function imgError(image) {
             image.onerror = "";
-            image.src = "https://placehold.co/400x500/1a1a1a/d4af37?text=Resim+Yok";
+            // NOT: Lütfen "img/resim_yok.jpg" gibi bir placeholder resminizin olduğundan emin olun.
+            image.src = "https://placehold.co/400x500/1a1a1a/d4af37?text=RESIM+YOK";
             return true;
         }
     </script>
