@@ -86,6 +86,14 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5); 
             z-index: 10;
         }
+        
+        /* Arama Kutusu Odak Efekti */
+        #searchInput:focus {
+            border-color: var(--gold) !important;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            background: #111 !important;
+        }
+
         .card-img { width: 100%; height: 300px; object-fit: cover; object-position: top center; background: #222; }
         .card-info { padding: 15px; text-align: center; }
         .card-badge { position: absolute; top: 10px; right: 10px; background: var(--gold); color: #000; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; z-index: 2; }
@@ -217,7 +225,6 @@
         }
         .vs-badge-large i { 
             font-size: 3rem;
-            margin-bottom: 10px; 
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
@@ -366,14 +373,52 @@
             font-size: 0.95rem;
         }
         
-        @media (max-width: 992px) {
+        /* MOBİL VE TABLET UYUMU */
+        @media (max-width: 1024px) {
+            /* Tablet/Yatay Telefon Düzenlemeleri */
+            .navbar { padding: 10px 20px; }
+            .hero h1 { font-size: 3rem; }
+            
+            /* Edirne Tanıtım Kartlarını Alt Alta Dizme */
             .edirne-card, .edirne-card.reverse {
                 flex-direction: column;
                 align-items: center;
             }
             .edirne-img {
-                width: 100%;
+                width: 100%; /* Görseli tam genişlikte yap */
                 min-width: unset;
+                height: 200px; /* Görsel yüksekliğini sabitle */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Dikey Telefon Düzenlemeleri */
+            .navbar { flex-direction: column; padding: 10px; }
+            .nav-links { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .modal-content { flex-direction: column; align-items: center; text-align: center; height: auto; max-height: 90vh; }
+            
+            /* Hero Başlığını küçültme */
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem !important; }
+
+            /* Kıyaslama Alanı (Select boxları alt alta getir) */
+            .compare-area { flex-direction: column; align-items: center; }
+            .result-box { flex-direction: column; gap: 20px; }
+            .vs-badge-large { margin: 10px 0; }
+            
+            /* Genel Analiz Bölümü */
+            #analiz > div {
+                flex-direction: column;
+            }
+            
+            /* Sözlük düzenini 1 sütuna düşürme */
+            .glossary-grid, .link-card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Fiziksel analiz grafiği için daha iyi yükseklik */
+            .chart-container-single {
+                height: 500px;
             }
         }
         /* Footer */
@@ -601,7 +646,8 @@
                     
                 </div>
             </div>
-        </div>
+            
+            </div>
     </section>
 
     <div id="bioModal" class="modal">
@@ -982,16 +1028,16 @@
         ];
         
         // Teknik oyunların tanımları
-        const TEKNIK_OYUNLAR = {
-            "Çangal": "Rakibin bacakları arasına girerek ayağını ya da paçasını yakalama ve ani çevirme oyunu.",
-            "Künde": "Rakibin sırtına geçip onu ayaklarından veya belinden yakalayarak havada çevirip yere vurma veya tuş etme oyunu.",
-            "Tırpan": "Ayak oyunlarının en etkililerinden biridir. Rakibin ayağını biçer gibi dışarıdan alıp dengesini bozarak düşürme tekniğidir.",
-            "Paça Kazık": "Rakibin paçasını yakalayıp diğer el ile koltuk altından tutarak yapılan, ani ve agresif bir düşürme tekniği.",
-            "Sırta Alma": "Genellikle ağır sikletlerin kullandığı, rakibin sırtına yüklenerek onu yerden kesme ve çömeltme tekniği.",
-            "Bel Kündesi": "Rakibi belinden kavrayarak yerden kesme ve havada döndürerek yere çalma tekniği.",
-            "İç Kazık": "Rakibin bacaklarının iç kısmından yapılan, rakiyi geriye doğru dengesiz bırakma ve düşürme oyunu.",
-            "El Ense Çekme": "Rakibin ensesinden sert bir şekilde bastırarak dengesini bozma ve gücünü yorma tekniği."
-        };
+        // const TEKNIK_OYUNLAR = {
+        //     "Çangal": "Rakibin bacakları arasına girerek ayağını ya da paçasını yakalama ve ani çevirme oyunu.",
+        //     "Künde": "Rakibin sırtına geçip onu ayaklarından veya belinden yakalayarak havada çevirip yere vurma veya tuş etme oyunu.",
+        //     "Tırpan": "Ayak oyunlarının en etkililerinden biridir. Rakibin ayağını biçer gibi dışarıdan alıp dengesini bozarak düşürme tekniğidir.",
+        //     "Paça Kazık": "Rakibin paçasını yakalayıp diğer el ile koltuk altından tutarak yapılan, ani ve agresif bir düşürme tekniği.",
+        //     "Sırta Alma": "Genellikle ağır sikletlerin kullandığı, rakibin sırtına yüklenerek onu yerden kesme ve çömeltme tekniği.",
+        //     "Bel Kündesi": "Rakibi belinden kavrayarak yerden kesme ve havada döndürerek yere çalma tekniği.",
+        //     "İç Kazık": "Rakibin bacaklarının iç kısmından yapılan, rakibi geriye doğru dengesiz bırakma ve düşürme oyunu.",
+        //     "El Ense Çekme": "Rakibin ensesinden sert bir şekilde bastırarak dengesini bozma ve gücünü yorma tekniği."
+        // };
 
 
         // --- 2. TERS KRONOLOJİK SIRALI TARİHÇE ---
@@ -1060,7 +1106,6 @@
         };
 
         // Ek Edirne yapıları (Harita için opsiyonel)
-        // NOT: Bu görsellerin img/ klasöründe bulunduğundan emin olun.
         const EDIRNE_YAPILARI = [
             { lat: 41.693, lng: 26.555, title: "Kırkpınar Er Meydanı", desc: "Tarihi güreşlerin yapıldığı stadyum.", img: "img/er_meydani.jpg" },
             { lat: 41.678, lng: 26.559, title: "Selimiye Camii", desc: "Mimar Sinan'ın Ustalık Eseri (UNESCO).", img: "img/selimiye.jpg" },
@@ -1069,8 +1114,25 @@
             { lat: 41.662, lng: 26.551, title: "Meriç Köprüsü", desc: "Mecidiye Köprüsü olarak da bilinir.", img: "img/meric_koprusu.jpg" },
             { lat: 41.675, lng: 26.553, title: "Eski Cami", desc: "Edirne'nin en eski anıtsal yapısı.", img: "img/eski_cami.jpg" }
         ];
+        
+        // Teknik oyunların tanımları
+        const TEKNIK_OYUNLAR = {
+            "Çangal": "Rakibin bacakları arasına girerek ayağını ya da paçasını yakalama ve ani çevirme oyunu.",
+            "Künde": "Rakibin sırtına geçip onu ayaklarından veya belinden yakalayarak havada çevirip yere vurma veya tuş etme oyunu.",
+            "Tırpan": "Ayak oyunlarının en etkililerinden biridir. Rakibin ayağını biçer gibi dışarıdan alıp dengesini bozarak düşürme tekniğidir.",
+            "Paça Kazık": "Rakibin paçasını yakalayıp diğer el ile koltuk altından tutarak yapılan, ani ve agresif bir düşürme tekniği.",
+            "Sırta Alma": "Genellikle ağır sikletlerin kullandığı, rakibin sırtına yüklenerek onu yerden kesme ve çömeltme tekniği.",
+            "Bel Kündesi": "Rakibi belinden kavrayarak yerden kesme ve havada döndürerek yere çalma tekniği.",
+            "İç Kazık": "Rakibin bacaklarının iç kısmından yapılan, rakibi geriye doğru dengesiz bırakma ve düşürme oyunu.",
+            "El Ense Çekme": "Rakibin ensesinden sert bir şekilde bastırarak dengesini bozma ve gücünü yorma tekniği."
+        };
 
-        // --- SAYFA YÜKLENİNCE ---
+
+        /* =======================================
+           BAŞLANGIÇ FONKSİYONLARI VE LİSTELER
+        ======================================= */
+        let combinedChart; 
+        
         window.onload = function() {
             pehlivanlariBas(PEHLIVANLAR);
             tabloyuBas(TARIHCE);
@@ -1078,28 +1140,30 @@
             selectleriDoldur();
             grafigiCiz(); 
             sozlukDoldur(); 
+            // Kariyer Grafiği kaldırıldığı için çağrılmayacak.
         };
+        
         
         /* =======================================
            YENİ FONKSİYON: SÖZLÜK DOLDURUCU
         ======================================= */
         function sozlukDoldur() {
             const sozlukDiv = document.getElementById("teknikSozluk");
+            // Hata Kontrolü: Eğer element bulunamazsa dur.
+            if (!sozlukDiv) return;
+
             let htmlContent = '';
             
-            // Hangi pehlivanın hangi oyunda uzman olduğunu bulmak için ters harita oluştur
             const uzmanPehlivanlar = {};
             PEHLIVANLAR.forEach(p => {
-                // Uzmanlık alanlarını virgül ile ayırıp temizle
                 const uzmanliklar = p.uzmanlik.split(',').map(s => s.trim());
                 uzmanliklar.forEach(uzmanlik => {
-                    // Anahtar kelimeleri (Çangal, Künde vb.) bul
+                    // TEKNIK_OYUNLAR içindeki terim kontrolü
                     const terim = Object.keys(TEKNIK_OYUNLAR).find(t => uzmanlik.includes(t));
                     if (terim) {
                         if (!uzmanPehlivanlar[terim]) {
                             uzmanPehlivanlar[terim] = [];
                         }
-                        // Pehlivan adını listeye ekle, eğer listede yoksa
                         if (!uzmanPehlivanlar[terim].includes(p.ad)) {
                             uzmanPehlivanlar[terim].push(p.ad);
                         }
@@ -1107,7 +1171,6 @@
                 });
             });
 
-            // Sözlüğü doldur
             for (const terim in TEKNIK_OYUNLAR) {
                 const aciklama = TEKNIK_OYUNLAR[terim];
                 const pehlivanListesi = uzmanPehlivanlar[terim] ? uzmanPehlivanlar[terim].join(', ') : 'Belirtilmemiş';
@@ -1125,7 +1188,7 @@
         }
 
         /* =======================================
-           ESKİ FONKSİYONLARIN DEVAMI
+           DİĞER FONKSİYONLAR
         ======================================= */
         
         // GÜNCEL 3. Haritayı Oluşturma
@@ -1367,6 +1430,13 @@
 
         function grafigiCiz() {
             const ctx = document.getElementById('combinedChartCanvas').getContext('2d');
+            
+            // Hata Kontrolü: Canvas elementinin varlığını kontrol et
+            if (!ctx) {
+                console.error("Grafik çizilemedi: Canvas elementi bulunamadı.");
+                return;
+            }
+
             const grafikVerisi = PEHLIVANLAR;
             const labels = grafikVerisi.map(p => {
                 const parts = p.ad.split(" ");
@@ -1379,6 +1449,7 @@
             const boylar = grafikVerisi.map(p => p.boy);
             const kilolar = grafikVerisi.map(p => p.kilo);
 
+            // Önceki grafiği yok et
             if (window.combinedChart) window.combinedChart.destroy();
 
             window.combinedChart = new Chart(ctx, {
@@ -1471,7 +1542,6 @@
 
         function imgError(image) {
             image.onerror = "";
-            // NOT: Lütfen "img/resim_yok.jpg" gibi bir placeholder resminizin olduğundan emin olun.
             image.src = "https://placehold.co/400x500/1a1a1a/d4af37?text=RESIM+YOK";
             return true;
         }
